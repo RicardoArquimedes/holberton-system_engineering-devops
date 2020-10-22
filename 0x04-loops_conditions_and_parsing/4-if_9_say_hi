@@ -2,9 +2,9 @@
 # Write a Bash script that displays Holberton School 10 times
 
 x=0
-while [ $x -le 10 ]
+while [ $x -lt 10 ]
         do
-                echo "Holberton School"
+        echo "Holberton School"
         if [ $x -eq 8 ];
         then
                 echo "Hi"
