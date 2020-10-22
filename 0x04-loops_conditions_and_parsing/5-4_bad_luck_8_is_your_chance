@@ -13,5 +13,5 @@ while [ $x  -le 10 ]
         else
                 echo  "Holberton School"
         fi
-        x=$(( $x + 1))
+        x=$(( x = x + 1))
         done
