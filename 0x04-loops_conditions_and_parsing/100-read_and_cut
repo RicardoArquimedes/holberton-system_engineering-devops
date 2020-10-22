@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Display the content of /etc/passwd only: username, user id & Home 
 
 while IFS=: read -r line
