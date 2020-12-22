@@ -1,16 +1,25 @@
-# reating a custom HTTP header response, but with Puppet
+# Creating a custom Header HTTP with Puppet
+
 exec { 'update':
-  command => '/usr/bin/apt-get update',
+  command => 'sudo apt-get update',
+  path    => ['/usr/bin', '/bin'],
 }
+
 package { 'nginx':
-  ensure => 'installed',
-  name   => 'nginx',
+  ensure  => installed,
+  require => Exec['update'],
 }
-file_line { 'add_custom_header':
-  path  => '/etc/nginx/sites-available/default',
-  line  => "\tadd_header X-Served-By ${hostname};",
-  after => 'server_name _;'
+
+file_line { 'custom_header':
+  ensure  => present,
+  path    => '/etc/nginx/sites-available/default',
+  after   => 'listen 80 default_server;',
+  line    => "add_header X-Served-By ${hostname};",
+  require => Package['nginx'],
 }
+
 exec { 'restart':
-  command => '/usr/sbin/service nginx restart',
+  command => 'sudo service nginx restart',
+  path    => ['/usr/bin', '/bin'],
+  require => File_line['custom_header'],
 }
