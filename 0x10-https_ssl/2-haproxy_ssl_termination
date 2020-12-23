@@ -7,6 +7,8 @@ global
         user haproxy
         group haproxy
         daemon
+        maxconn 2048
+        tune.ssl.default-dh-param 2048
 
         # Default SSL material locations
         ca-base /etc/ssl/certs
@@ -31,12 +33,25 @@ defaults
         errorfile 502 /etc/haproxy/errors/502.http
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
-frontend front 
-    bind *:80
+        option forwardfor
+        option http-server-close
+
+frontend firstbalance
+          bind *:80
+          reqadd X-Forwarded-Proto:\ http
+          default_backend servers
+
+frontend www-https
     bind *:443 ssl crt /etc/haproxy/certs/www.ricardoarquimedes.tech.pem
-    mode http
-    default_backend back
-backend back
+    reqadd X-Forwarded-Proto:\ https
+    acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+    use_backend letsencrypt-backend if letsencrypt-acl
+    default_backend servers
+    
+backend servers
     balance roundrobin
     server 1877-web-01 35.190.136.16:80 check
     server 1877-web-02 35.231.20.58:80 check
+
+backend letsencrypt-backend
+   server letsencrypt 127.0.0.1:54321
