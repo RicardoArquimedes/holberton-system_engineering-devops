@@ -2,5 +2,5 @@
 # Fix this container make your fix short and sweet.
 pkill -f apache2
 chmod 700 /etc/nginx/nginx.conf
-sed -i 's/80 default_server/8080 default_server/' /etc/nginx/sites-available/default
-sudo -u nginx service nginx restart 
+sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
+sudo -u nginx service nginx restart
