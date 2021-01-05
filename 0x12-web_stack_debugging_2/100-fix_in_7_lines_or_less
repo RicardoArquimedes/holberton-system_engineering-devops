@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Fix this container make your fix short and sweet.
-pkill -f apache2
 chmod 700 /etc/nginx/nginx.conf
 sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
+pkill -f apache2
 sudo -u nginx service nginx restart
