@@ -16,6 +16,6 @@ frontend front
     default_backend back
 backend back
     balance roundrobin
-    server 1877-web-01 104.196.132.76: 80 check
+    server 1877-web-01 104.196.132.76:80 check
     server 1877-web-02 35.231.20.58:80 check" >> /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
