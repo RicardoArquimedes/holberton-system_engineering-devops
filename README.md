@@ -45,7 +45,13 @@ In this project, I reviewed the basic concepts about [BASH](https://www.gnu.org/
 2|[0x01-shell_permissions](./0x01-shell_permissions)|In this project the EMACS text editor was installed and its basic commands were revised.
 3|[0x02-shell_redirections](./0x02-shell_redirections)|In this project the basic commands of the text editor VI were revised.
 4|[0x03-shell_variables_expansions](./0x03-shell_variables_expansions)|In this project I work with the Github version control tool and its main commands.
-
+5|[0x03-shell_variables_expansions](./0x03-shell_variables_expansions)| Variables & Expansions
+6|[0x04-loops_conditions_and_parsing](./0x04-loops_conditions_and_parsing)| Loops, conditions and parsing
+7|[0x05-processes_and_signals](./0x05-processes_and_signals)| Processes and signals
+8|[0x06-regular_expressions](./0x06-regular_expressions)| Regular Expressions (RegEx)
+9|[0x07-networking_basics](./0x07-networking_basics)| Networking basics
+10|[0x08-networking_basics_2](./0x08-networking_basics_2)| Networking basics 2
+11|[0x09-web_infrastructure_design](./0x09-web_infrastructure_design)| Web infrastructure
 ---
 
 <p align="center">
